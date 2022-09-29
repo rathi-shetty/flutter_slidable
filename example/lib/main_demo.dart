@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Tile(color: Colors.lime, text: 'hello 4'),
               ),
             Slidable(
-              slideDuration: const Duration(milliseconds: 1000),
+              movementDuration: const Duration(milliseconds: 1000),
               key: const ValueKey(5),
               direction: direction,
               startActionPane: const ActionPane(
@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Tile(color: Colors.grey, text: 'hello'),
             ),
             Slidable(
-              slideDuration: const Duration(milliseconds: 1000),
+              movementDuration: const Duration(milliseconds: 1000),
               key: const ValueKey(6),
               direction: direction,
               startActionPane: const ActionPane(
@@ -206,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Tile(color: Colors.grey, text: 'hello'),
             ),
             Slidable(
-              slideDuration: const Duration(milliseconds: 1000),
+              movementDuration: const Duration(milliseconds: 1000),
               key: const ValueKey(7),
               direction: direction,
               startActionPane: const ActionPane(
@@ -226,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Tile(color: Colors.grey, text: 'hello'),
             ),
             Slidable(
-              slideDuration: const Duration(milliseconds: 1000),
+              movementDuration: const Duration(milliseconds: 1000),
               key: const ValueKey(8),
               direction: direction,
               startActionPane: const ActionPane(

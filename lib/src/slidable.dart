@@ -27,7 +27,7 @@ class Slidable extends StatefulWidget {
     this.direction = Axis.horizontal,
     this.dragStartBehavior = DragStartBehavior.down,
     this.useTextDirection = true,
-    this.slideDuration,
+    this.movementDuration,
     required this.child,
   }) : super(key: key);
 
@@ -61,7 +61,7 @@ class Slidable extends StatefulWidget {
 
   /// The Duration in which this [Slidable] can close the slide.
 
-  final Duration? slideDuration;
+  final Duration? movementDuration;
 
   /// A widget which is shown when the user drags the [Slidable] to the left or
   /// to the top.
@@ -238,7 +238,7 @@ class _SlidableState extends State<Slidable>
       child: SlidableAutoCloseBehaviorInteractor(
         groupTag: widget.groupTag,
         controller: controller,
-        slideDuration: widget.slideDuration,
+        movementDuration: widget.movementDuration,
         child: widget.child,
       ),
     );

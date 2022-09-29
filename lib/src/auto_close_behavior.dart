@@ -94,7 +94,7 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
     Key? key,
     required this.groupTag,
     required this.controller,
-    this.slideDuration,
+    this.movementDuration,
     required this.child,
   }) : super(key: key);
 
@@ -104,8 +104,8 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
   /// {@macro slidable.controller}
   final SlidableController controller;
 
-  /// {@macro slidable.slideDuration}
-  final Duration? slideDuration;
+  /// {@macro slidable.movementDuration}
+  final Duration? movementDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -117,7 +117,7 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
     return SlidableAutoCloseInteractor(
       groupTag: groupTag,
       controller: controller,
-      slideDuration: slideDuration,
+      movementDuration: movementDuration,
       child: SlidableAutoCloseBarrierInteractor(
         groupTag: groupTag,
         controller: controller,
@@ -158,7 +158,7 @@ class SlidableAutoCloseInteractor extends StatelessWidget {
       {Key? key,
       required this.groupTag,
       required this.controller,
-      this.slideDuration,
+      this.movementDuration,
       required this.child})
       : super(key: key);
 
@@ -168,8 +168,8 @@ class SlidableAutoCloseInteractor extends StatelessWidget {
   /// {@macro slidable.controller}
   final SlidableController controller;
 
-  /// {@macro slidable.slideDuration}
-  final Duration? slideDuration;
+  /// {@macro slidable.movementDuration}
+  final Duration? movementDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -184,7 +184,7 @@ class SlidableAutoCloseInteractor extends StatelessWidget {
       child: SlidableAutoCloseBehaviorListener(
         groupTag: groupTag,
         controller: controller,
-        slideDuration: slideDuration,
+        movementDuration: movementDuration,
         child: child,
       ),
     );
@@ -199,7 +199,7 @@ class SlidableAutoCloseBehaviorListener extends StatelessWidget {
       required this.groupTag,
       required this.controller,
       required this.child,
-      this.slideDuration})
+      this.movementDuration})
       : super(key: key);
 
   /// {@macro slidable.groupTag}
@@ -208,8 +208,8 @@ class SlidableAutoCloseBehaviorListener extends StatelessWidget {
   /// {@macro slidable.controller}
   final SlidableController controller;
 
-  /// {@macro slidable.slideDuration}
-  final Duration? slideDuration;
+  /// {@macro slidable.movementDuration}
+  final Duration? movementDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -223,7 +223,7 @@ class SlidableAutoCloseBehaviorListener extends StatelessWidget {
         if (groupTag == notification.groupTag &&
             (notification.closeSelf || notification.controller != controller) &&
             !controller.closing) {
-          controller.close(duration: slideDuration);
+          controller.close(duration: movementDuration);
         }
       },
       child: child,

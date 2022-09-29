@@ -258,9 +258,11 @@ class SlidableController {
 
   /// Opens the current [ActionPane].
   Future<void> openCurrentActionPane({
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
+
     return openTo(
       actionPaneConfigurator!.extentRatio,
       duration: duration,
@@ -270,9 +272,10 @@ class SlidableController {
 
   /// Opens the [Slidable.startActionPane].
   Future<void> openStartActionPane({
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
     if (actionPaneType.value != ActionPaneType.start) {
       direction.value = isLeftToRight ? 1 : -1;
       ratio = 0;
@@ -287,9 +290,10 @@ class SlidableController {
 
   /// Opens the [Slidable.endActionPane].
   Future<void> openEndActionPane({
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
     if (actionPaneType.value != ActionPaneType.end) {
       direction.value = isLeftToRight ? -1 : 1;
       ratio = 0;
@@ -305,9 +309,10 @@ class SlidableController {
   /// Opens the [Slidable] to the given [ratio].
   Future<void> openTo(
     double ratio, {
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
     assert(ratio >= -1 && ratio <= 1);
 
     if (_closing) {
@@ -329,9 +334,10 @@ class SlidableController {
   /// Dismisses the [Slidable].
   Future<void> dismiss(
     ResizeRequest request, {
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
     await _animationController.animateTo(
       1,
       duration: _defaultMovementDuration,
