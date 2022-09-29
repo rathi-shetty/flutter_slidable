@@ -94,6 +94,7 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
     Key? key,
     required this.groupTag,
     required this.controller,
+    this.slideDuration,
     required this.child,
   }) : super(key: key);
 
@@ -102,6 +103,9 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
 
   /// {@macro slidable.controller}
   final SlidableController controller;
+
+  /// {@macro slidable.slideDuration}
+  final Duration? slideDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -113,6 +117,7 @@ class SlidableAutoCloseBehaviorInteractor extends StatelessWidget {
     return SlidableAutoCloseInteractor(
       groupTag: groupTag,
       controller: controller,
+      slideDuration: slideDuration,
       child: SlidableAutoCloseBarrierInteractor(
         groupTag: groupTag,
         controller: controller,
@@ -149,18 +154,22 @@ class SlidableAutoCloseNotification {
 /// INTERNAL USE
 class SlidableAutoCloseInteractor extends StatelessWidget {
   /// INTERNAL USE
-  const SlidableAutoCloseInteractor({
-    Key? key,
-    required this.groupTag,
-    required this.controller,
-    required this.child,
-  }) : super(key: key);
+  const SlidableAutoCloseInteractor(
+      {Key? key,
+      required this.groupTag,
+      required this.controller,
+      this.slideDuration,
+      required this.child})
+      : super(key: key);
 
   /// {@macro slidable.groupTag}
   final Object? groupTag;
 
   /// {@macro slidable.controller}
   final SlidableController controller;
+
+  /// {@macro slidable.slideDuration}
+  final Duration? slideDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -175,6 +184,7 @@ class SlidableAutoCloseInteractor extends StatelessWidget {
       child: SlidableAutoCloseBehaviorListener(
         groupTag: groupTag,
         controller: controller,
+        slideDuration: slideDuration,
         child: child,
       ),
     );
@@ -184,18 +194,22 @@ class SlidableAutoCloseInteractor extends StatelessWidget {
 /// INTERNAL USE
 class SlidableAutoCloseBehaviorListener extends StatelessWidget {
   /// INTERNAL USE
-  const SlidableAutoCloseBehaviorListener({
-    Key? key,
-    required this.groupTag,
-    required this.controller,
-    required this.child,
-  }) : super(key: key);
+  const SlidableAutoCloseBehaviorListener(
+      {Key? key,
+      required this.groupTag,
+      required this.controller,
+      required this.child,
+      this.slideDuration})
+      : super(key: key);
 
   /// {@macro slidable.groupTag}
   final Object? groupTag;
 
   /// {@macro slidable.controller}
   final SlidableController controller;
+
+  /// {@macro slidable.slideDuration}
+  final Duration? slideDuration;
 
   /// The widget below this widget in the tree.
   ///
@@ -209,7 +223,7 @@ class SlidableAutoCloseBehaviorListener extends StatelessWidget {
         if (groupTag == notification.groupTag &&
             (notification.closeSelf || notification.controller != controller) &&
             !controller.closing) {
-          controller.close();
+          controller.close(duration: slideDuration);
         }
       },
       child: child,

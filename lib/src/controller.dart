@@ -242,9 +242,10 @@ class SlidableController {
 
   /// Closes the [Slidable].
   Future<void> close({
-    Duration duration = _defaultMovementDuration,
+    Duration? duration,
     Curve curve = _defaultCurve,
   }) async {
+    duration ??= _defaultMovementDuration;
     _closing = true;
     await _animationController.animateBack(
       0,
